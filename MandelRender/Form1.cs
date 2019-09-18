@@ -24,17 +24,19 @@ namespace MandelRender
             double newy = (y - 250 + offsety);
             newy /= zoom;
             double n = 0;
+            double ntemp;
             double m = 0;
 
             for (counter = 0; counter < iterations; counter++)
             {
-                if (Math.Sqrt((n * n) + (m * m)) >= 2)
+                if (n*n + m*m >= 2*2)
                 {
                     Form1.mandelImage.SetPixel(x, y, Color.FromArgb((255 * ((counter + paletteOffset) % 16)) / 16, (255 * ((counter + paletteOffset) % 8)) / 8, (255 * ((counter + paletteOffset) % 4)) / 4));
                     return;
                 }
-                n = (n * n) - (m * m) + newx;
-                m = (2 * n * m) + newy;
+                ntemp = n*n - m*m + newx;
+                m = 2*n*m + newy;
+                n = ntemp;
             }
             Form1.mandelImage.SetPixel(x, y, Color.Black);
         }

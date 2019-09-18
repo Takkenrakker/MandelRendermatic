@@ -58,7 +58,7 @@ namespace MandelRender
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(56, 22);
             this.textBox1.TabIndex = 1;
-            this.textBox1.Text = "0";
+            this.textBox1.Text = "128";
             // 
             // textBox2
             // 
@@ -154,8 +154,8 @@ namespace MandelRender
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.label1);
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.Name = "Form1";
-            this.Text = "Form1";
+            this.Name = "Mandelbrot";
+            this.Text = "Mandelbrot";
             this.Load += new System.EventHandler(this.Form1_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
