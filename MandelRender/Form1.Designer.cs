@@ -78,7 +78,6 @@ namespace MandelRender
             this.label2.Size = new System.Drawing.Size(17, 17);
             this.label2.TabIndex = 2;
             this.label2.Text = "X";
-            this.label2.Click += new System.EventHandler(this.Label2_Click);
             // 
             // textBox3
             // 
@@ -157,6 +156,7 @@ namespace MandelRender
             this.Name = "Mandelbrot";
             this.Text = "Mandelbrot";
             this.Load += new System.EventHandler(this.Form1_Load);
+            this.KeyUp += PictureBox1_KeyUp;
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
