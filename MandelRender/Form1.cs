@@ -30,9 +30,9 @@ namespace MandelRender
             }
             if (counter < iterations)
             {
-                double log_zn = Math.Log(n * n + m * m) / 2;
-                double nu = Math.Log(log_zn / Math.Log(2)) / Math.Log(2);
-                counter = counter + 1 - nu;
+                double normalized = Math.Log(n * n + m * m) / 2;
+                double rest = Math.Log(normalized / Math.Log(2)) / Math.Log(2);
+                counter = counter + 1 - rest;
             }
             else
             {
@@ -63,10 +63,10 @@ namespace MandelRender
             int orint = 256;
             int interlaces = 256;
             int screenY = interlaces;
-            int iterations = int.Parse(textBox3.Text);
-            float zoom = float.Parse(textBox1.Text);
-            float offsetX = float.Parse(textBox2.Text);
-            float offsetY = float.Parse(textBox4.Text);
+            int iterations = int.Parse(textIter.Text);
+            float zoom = 1 / float.Parse(textZoom.Text);
+            float offsetX = float.Parse(textX.Text);
+            float offsetY = float.Parse(textY.Text);
             int palette = comboBox1.SelectedIndex;
             while (screenY < 900)
             {
@@ -110,20 +110,32 @@ namespace MandelRender
             switch (e.KeyCode)
             {
                 case Keys.W:
-                    textBox4.Text = "" + (int.Parse(textBox4.Text) + 100);
+                    textY.Text = "" + (int.Parse(textY.Text) + 100);
                     return;
                 case Keys.A:
-                    textBox2.Text = "" + (int.Parse(textBox2.Text) - 100);
+                    textX.Text = "" + (int.Parse(textX.Text) - 100);
                     return;
                 case Keys.S:
-                    textBox4.Text = "" + (int.Parse(textBox4.Text) - 100);
+                    textY.Text = "" + (int.Parse(textY.Text) - 100);
                     return;
                 case Keys.D:
-                    textBox2.Text = "" + (int.Parse(textBox2.Text) + 100);
+                    textX.Text = "" + (int.Parse(textX.Text) + 100);
                     return;
             }
             MandelRender();
         }
 
+        private void PictureBox1_MouseClick(object sender, MouseEventArgs e)
+        {
+            textX.Text = ""+ (double.Parse(textX.Text)+(e.X - 450)* double.Parse(textZoom.Text));
+            textY.Text = ""+ (double.Parse(textY.Text)+(e.Y - 450)* double.Parse(textZoom.Text));
+            textZoom.Text = "" + 0.5 * double.Parse(textZoom.Text);
+            MandelRender();
+        }
+
+        private void Label5_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
